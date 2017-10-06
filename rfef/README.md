@@ -1,4 +1,6 @@
-# Installation & Setup
+# Scrapy
+
+## Installation & Setup
 
 ```shell
 mkdir rfef && cd rfef
@@ -9,21 +11,26 @@ scrapy startproject rfef
 scrapy shell "http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100&CodTemporada=100&CodJornada=1"
 ```
 
-# Crawling
+## Crawling
 
 ```shell
 scrapy crawl acta_rfef -o actas.json -t json
 ```
 
-# Notes
+## Notes
 
 
 Include encoding option in settings.py
 
-   FEED_EXPORT_ENCODING = 'utf-8'
+```shell
+FEED_EXPORT_ENCODING = 'utf-8'
+```
 
+# Approach
 
-# URL structure
+## URL structure
+
+Understanding how the URLs change for different seasons,etc.
 
 
 Temporada 2003/2004 / Jornada 1
@@ -39,7 +46,9 @@ Temporada 2017/2018 / Jornada 7
 http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100&CodTemporada=114&CodJornada=7
 
 
-# Acta
+## Acta
+
+For a given match, we need to access its "Acta" (consists of 2 different pages)
 
 Temporada 2017/2018 / Jornada 7
 
@@ -51,7 +60,7 @@ http://actas.rfef.es/actas/RFEF_CmpActa1?cod_primaria=1000144&CodActa=44378
 http://actas.rfef.es/actas/RFEF_CmpActa2?cod_primaria=1000144&CodActa=44378
 
 
-# Fields
+## JSON desired output
 
 ```json
 
