@@ -1,17 +1,11 @@
 # Installation & Setup
 
 ```shell
-
 mkdir rfef && cd rfef
-
 virtualenv .
-
 source bin/activate
-
 pip install scrapy
-
 scrapy startproject rfef
-
 scrapy shell "http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100&CodTemporada=100&CodJornada=1"
 ```
 
