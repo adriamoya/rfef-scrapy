@@ -62,6 +62,8 @@ http://actas.rfef.es/actas/RFEF_CmpActa2?cod_primaria=1000144&CodActa=44378
 
 ## JSON desired output
 
+For each match, we want to scrape the following info.
+
 ```json
 
 {
