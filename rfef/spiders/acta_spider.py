@@ -5,16 +5,15 @@ import scrapy
 import re
 import decimal
 import datetime
-#
+
 from scrapy.conf import settings
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.http.request import Request
 from scrapy.selector import Selector
-#
+
 from ..items import ActaItem
 
 base_url = 'http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100'
-
 
 # Aux method to return no. of month given the month name
 def month_to_number(string):
@@ -61,8 +60,6 @@ class ActaSpider(scrapy.Spider):
 		
 		for cod_temporada in range(100,114,1):
 			for cod_jornada in range(1,38,1):
-				# cod_temporada = 100
-				# cod_jornada = 1
 
 				extra_url = '&CodTemporada=%s&CodJornada=%s' % (cod_temporada, cod_jornada)
 				page_url = base_url + extra_url
@@ -101,20 +98,12 @@ class ActaSpider(scrapy.Spider):
 
 		acta = response.meta['item']
 
-		'''
-			Row 1:
-				- Campeonato
-				- Temporada
-				- Jornada
-			Row 2:
-				- Fecha
-		'''
 		try:
 			upper_table = response.xpath('//tr[contains(@class,"BG_TIT_PAG")]')
 		except:
 			pass
 
-		# Info general
+		# General info from the match
 
 		try:
 			temporada = upper_table[0].xpath('.//td/text()').extract()[0].strip()
@@ -282,11 +271,6 @@ class ActaSpider(scrapy.Spider):
 
 
 		acta["club_visitante"] = club 
-
-
-		# Potser trucar a la url_acta2 dinse de parse_acta1,
-		# passant url_acta2 dins de l'ActaItem
-
 
 		request = scrapy.Request(
 				acta['urls'][1],
