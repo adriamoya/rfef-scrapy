@@ -2,9 +2,13 @@ Installation & Setup
 ------------------------------------------------------------------------------------
 
 mkdir rfef && cd rfef
+
 virtualenv .
+
 source bin/activate
+
 pip install scrapy
+
 scrapy startproject rfef
 
 scrapy shell "http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100&CodTemporada=100&CodJornada=1"
@@ -17,38 +21,36 @@ scrapy crawl acta_rfef -o actas.json -t json
 
 Notes
 ------------------------------------------------------------------------------------
+
 Include encoding option in settings.py
+
 FEED_EXPORT_ENCODING = 'utf-8'
 
 
 URL structure
 ------------------------------------------------------------------------------------
 
-Temporada 2003/2004
-Jornada 1
+Temporada 2003/2004 / Jornada 1
 
 http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100&CodTemporada=100&CodJornada=1
 
-Temporada 2004/2005
-Jornada 13
+Temporada 2004/2005 / Jornada 13
 
 http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100&CodTemporada=101&CodJornada=13
 
-Temporada 2017/2018
-Jornada 7
+Temporada 2017/2018 / Jornada 7
 
 http://actas.rfef.es/actas/RFEF_CmpJornada?cod_primaria=1000144&CodCategoria=100&CodTemporada=114&CodJornada=7
 
 CodTemporada = 100 To 114
+
 codJornada = 1 To 38
 
 
 Acta
 ------------------------------------------------------------------------------------
 
-Temporada 2017/2018
-Jornada 7
-Barcelona 3 - Las Palmas 0
+Temporada 2017/2018 / Jornada 7
 
 http://actas.rfef.es/actas/RFEF_CmpPartido?cod_primaria=1000144&CodActa=44378
 
@@ -60,6 +62,8 @@ http://actas.rfef.es/actas/RFEF_CmpActa2?cod_primaria=1000144&CodActa=44378
 
 Fields
 ------------------------------------------------------------------------------------
+
+```json
 
 {
    "jornada":1,
@@ -339,3 +343,4 @@ Fields
       ]
    }
 }
+```
